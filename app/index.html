@@ -1,0 +1,63 @@
+{#
+  If you are creating a graphic, you'll need to change what template this page
+  is inheriting from below. Likely, you are going to want to change `base.html`
+  to `base-embed.html`. You will also need to change the "main" script webpack
+  is looking for in `webpack.config.js`. The template for a graphic can be
+  found below content block - replace what's in there as needed.
+#}
+
+{% extends 'base.html' %}
+{% import 'macros/shares.html' as shares %}
+
+{% block content %}
+<div class="container">
+  <header class="article-header text-center">
+    <h1 class="article-title">The only member-supported, digital-first, nonpartisan media organization</h1>
+    <p class="article-byline">
+      <span class="article-author">By <a href="#">Super Cool Corgi</a></span>
+      <span class="article-pub-date"><time datetime="{{ context.pub_date }}">{{ apFormatDate(context.pub_date) }}</time></span>
+    </p>
+    <div class="article-shares">
+      <a class="button button--small button--facebook article-shares-button" href="{{ shares.facebook(CURRENT_PAGE_URL) }}" ga-on="click" ga-hit-type="social" ga-social-network="Facebook" ga-social-action="share">
+        <svg class="icon icon-facebook">
+          <use xlink:href="#icon-facebook"></use>
+        </svg>
+      </a>
+      <a class="button button--small button--twitter article-shares-button" href="{{ shares.twitter(CURRENT_PAGE_URL, '', '') }}" ga-on="click" ga-hit-type="social" ga-social-network="Twitter" ga-social-action="tweet">
+        <svg class="icon icon-twitter">
+          <use xlink:href="#icon-twitter"></use>
+        </svg>
+      </a>
+      <a class="button button--small button--yellow article-shares-button" href="{{ shares.email('The Texas Tribune', '\n\n' + CURRENT_PAGE_URL)}}" ga-on="click" ga-hit-type="social" ga-social-network="Email" ga-social-action="email">
+        <svg class="icon icon-envelope">
+          <use xlink:href="#icon-envelope"></use>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="intro-prose">
+    <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto consequuntur, blanditiis, eligendi hic exercitationem ab culpa! Optio fugiat architecto pariatur cum. <a href="#">Distinctio ab iusto temporibus</a>, deserunt quam placeat incidunt aspernatur!</p>
+    <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quasi labore, suscipit saepe. Officia dolor natus asperiores voluptatum, dolores eius unde eligendi. Praesentium placeat, aliquam ipsa, optio assumenda expedita sequi.</p>
+  </div>
+</div>
+{% endblock content %}
+
+{#
+
+<div class="app">
+  <h1 class="graphic-title">Lorem ipsum dolor sit amet</h1>
+  <p class="graphic-prose">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, eveniet, voluptatem. Debitis, deserunt, numquam. Omnis consectetur, voluptate, ipsam ad quasi tempore suscipit? Iusto nemo labore earum deleniti officiis minima nihil!</p>
+  <div id="graphic" class="graphic"></div>
+  <ul class="graphic-footer">
+    <li>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, porro.</li>
+    <li>Source: <a href="#">Lorem ipsum dolor sit</a></li>
+  </ul>
+</div>
+
+#}
+
+{% block scripts %}
+{{ super() }}
+<script defer src="{{ static('scripts/main.js') }}"></script>
+{% endblock scripts %}
