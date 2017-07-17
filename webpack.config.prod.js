@@ -15,8 +15,8 @@ const productionConfig = Object.assign({}, config, {
 
 productionConfig.output = {
   path: appBuild,
-  filename: '[name].[chunkhash:8].js',
-  chunkFilename: '[name].[chunkhash:8].chunk.js',
+  filename: '[name].[chunkhash:10].js',
+  chunkFilename: '[name].[chunkhash:10].chunk.js',
   publicPath: '/' + path.join(projectConfig.folder, '/scripts/'),
   devtoolModuleFilenameTemplate: info =>
     path.relative(appSrc, info.absoluteResourcePath),

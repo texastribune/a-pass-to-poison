@@ -22,6 +22,9 @@ function loadScript(url, cb) {
   // set its URL
   script.src = url;
 
+  // should always be async
+  script.async = true;
+
   // if there is a supplied callback, add it to `onload`
   if (cb) script.onload = cb;
 
