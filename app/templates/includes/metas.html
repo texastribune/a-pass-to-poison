@@ -1,8 +1,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2E292A" />
 <link rel="canonical" href="{{ CURRENT_PAGE_URL }}">
-<meta name="description" content="{{ context.description }}">
+<meta name="description" content="{{ context.facebook_text }}">
 <meta name="robots" content="noarchive">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@texastribune">
@@ -12,15 +13,17 @@
 <meta property="og:type" content="article">
 <meta property="article:publisher" content="https://www.facebook.com/texastribune">
 <meta property="article:published_time" content="{{ context.pub_date }}">
-<meta property="og:description" content="{{ context.description }}">
+<meta property="og:description" content="{{ context.facebook_text }}">
 <meta property="og:site_name" content="The Texas Tribune">
-<meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png', true) }}">
+<meta property="og:image" content="{{ staticAbsolute('assets/images/pass-to-poison-share.png', true) }}">
 <meta property="fb:app_id" content="154122474650943">
 <meta name="parsely-title" content="{{ context.title }}" />
 <meta name="parsely-link" content="{{ CURRENT_PAGE_URL }}" />
 <meta name="parsely-type" content="post" />
-<meta name="parsely-image-url" content="{{ staticAbsolute('assets/images/share-art.png', true) }}" />
+<meta name="parsely-image-url" content="{{ staticAbsolute('assets/images/pass-to-poison-share.png', true) }}" />
 <meta name="parsely-pub-date" content="{{ context.pub_date }}" />
-<meta name="parsely-section" content="" />
+<meta name="parsely-section" content="{{ context.parsely_section }}" />
 <meta name="parsely-tags" content="" />
-{% for author in context.authors %}<meta name="parsely-author" content="{{ author }}" />{% endfor %}
+{% for author in context.parsely_authors %}
+<meta name="parsely-author" content="{{ author }}" />
+{% endfor %}

@@ -1,0 +1,199 @@
+{.sidebar_pollutant}
+image: pass-to-poison-butadiene.png
+image_class: butadiene
+align: right
+
+title: 1,3 Butadiene
+prose: A highly flammable colorless gas with a mild gasoline-like odor used to make rubber and plastics. Acute low exposure may cause irritation of ears, nose and throat or frostbite if it comes in contact with the skin. Acute high exposure may cause central nervous system damage, vertigo and fainting. Long-term exposure has been linked to cardiovascular disease and cancer.
+
+[.companies]
+name:Shell Deer Park
+county: Harris
+
+name: Houston Plant
+county: Harris
+
+name: Dow Texas Operations Freeport
+county: Brazoria
+[]
+{}
+
+{.sidebar_pollutant}
+image: pass-to-poison-benzene.png
+image_class: benzene
+align: right
+
+title: Benzene
+prose: A highly flammable liquid — colorless or light yellow at room temperature — with a sweet odor. Used to make some rubbers, detergents and pesticides, as well as other chemicals. Exposure can cause dizziness, tremors or death at very high levels. Long-term exposure (meaning at least one year) can cause leukemia, anemia and ovary shrinkage in women.
+
+[.companies]
+name: Dow Texas Operations Freeport
+county: Brazoria
+
+name:Shell Deer Park
+county: Harris
+
+name: Chevron Phillips Chemical Cedar Bayou Plant
+county: Harris
+[]
+{}
+
+{.sidebar_pollutant}
+image: pass-to-poison-sulfur-dioxide.png
+image_class: sulfur-dioxide
+align: right
+
+title: Sulfur dioxide
+prose: A highly toxic colorless gas with an odor that has been described as “suffocating.” Used to make sulfuric acid, as a bleaching agent and refrigerant. Has been linked to genetic defects and may result in death if inhaled in large quantities. Side effects of short-term exposure include respiratory system damage. Can react with other compounds in the atmosphere to form particulate matter.
+
+[.companies]
+name: Keystone Gas Plant
+county: Winkler
+
+name: Howard Glascock Sour Gas Injection Facility
+county: Howard
+
+name: Amerada Hess Seminole Gas Processing Plant
+county: Gaines
+[]
+{}
+
+{.sidebar_pollutant}
+image: pass-to-poison-hydrogen-sulfide.png
+image_class: hydrogen-sulfide
+align: right
+
+title: Hydrogen sulfide
+prose: A highly toxic and flammable, colorless gas with a characteristic rotten-egg odor. A byproduct of petroleum refining and other industrial processes, it’s used to make sulfuric acid and heavy water for nuclear reactors. Symptoms of acute exposure include delirium and convulsions. Inhalation at high concentrations can result in rapid unconsciousness and death.
+
+[.companies]
+name: Keystone Gas Plant
+county: Winkler
+
+name: GSAU 2 2 Battery
+county: Ector
+
+name: Howard Glascock Sour Gas Injection Facility
+county: Howard
+[]
+{}
+
+{.sidebar_pollutant}
+image: pass-to-poison-nitrogen-oxide.png
+image_class: nitrogen-oxide
+align: right
+
+title: Nitrogen oxide
+prose: A highly reactive gas produced mainly through the burning of fuel. Interacts with water, oxygen and other chemicals in the atmosphere to form acid rain. Immediate exposure to high concentrations can irritate airways and exacerbate asthma. Long-term exposure to high levels may contribute to the development of asthma and increase susceptibility to respiratory infections.
+
+[.companies]
+name: Goldsmith Gas Plant
+county: Ector
+
+name: Midkiff Gas Plant
+county: Reagan
+
+name: Dow Texas Operations Freeport
+county: Brazoria
+[]
+{}
+
+{.sidebar_pollutant}
+image: pass-to-poison-particulate-matter.png
+image_class: particulate-matter
+align: right
+
+title: Particulate matter
+prose: A complex mixture of extremely small particles and liquid droplets that get into the air. Once inhaled, these particles can penetrate into the lungs and bloodstream and cause serious health problems, including premature death in people with heart or lung disease, nonfatal heart attack and aggravated asthma. Most particles form as a result of complex reactions of chemicals such as sulfur dioxide and and nitrogen oxides, but also can be emitted directly from a source like a smokestack. Fine particles are the main cause of reduced visibility (haze).
+
+[.companies]
+name: Borger Refinery
+county: Hutchinson
+
+name: Pasadena Refining System
+county: Harris
+
+name: Sweeny Refinery
+county: Brazoria
+[]
+{}
+
+
+{#<p class="sidebar__title-block sidebar__title-block--table">Top emitters</p>
+<div class="sidebar__container">
+  <ul class="company__items">
+    {% for company in value.companies %}
+    <li class="company__item"><span class="company__name">{{ company.name }}</span> in {{ company.county }} County</li>
+    {% endfor %}
+  </ul>
+</div>#}
+
+.sidebar__image--butadiene {
+  height: 90px;
+  margin-bottom: -(90px / 3);
+
+  @include mq($from: s) {
+    height: 125px;
+    margin-bottom: -(125px / 3);
+  }
+}
+
+.sidebar__image--benzene {
+  height: 90px;
+  margin-bottom: -(90px * .264);
+  margin-top: -(90px * .072);
+
+  @include mq($from: s) {
+    height: 125px;
+    margin-bottom: -(125px * .264);
+    margin-top: -(125px * .072);
+  }
+}
+
+.sidebar__image--sulfur-dioxide {
+  height: 75px;
+  margin-bottom: -(75px * .314814815);
+  margin-top: (75px * .851851852);
+
+  @include mq($from: s) {
+    height: 54px;
+    margin-bottom: -(54px * .314814815);
+    margin-top: (54px * .851851852);
+  }
+}
+
+.sidebar__image--hydrogen-sulfide {
+  height: 40px;
+  margin-bottom: -(40px * .2625);
+  margin-top: (40px * .3);
+
+  @include mq($from: s) {
+    height: 80px;
+    margin-bottom: -(80px * .2625);
+    margin-top: (80px * .3);
+  }
+}
+
+.sidebar__image--nitrogen-oxide {
+  height: 60px;
+  margin-bottom: -(60px * .533333333);
+  margin-top: (60px * 1.377777778);
+
+  @include mq($from: s) {
+    height: 45px;
+    margin-bottom: -(45px * .533333333);
+    margin-top: (45px * 1.377777778);
+  }
+}
+
+.sidebar__image--particulate-matter {
+  height: 75px;
+  margin-bottom: -(75px * .288888889);
+  margin-top: (75px * .211111111);
+
+  @include mq($from: s) {
+    height: 90px;
+    margin-bottom: -(90px * .288888889);
+    margin-top: (90px * .211111111);
+  }
+}

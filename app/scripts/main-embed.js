@@ -33,7 +33,7 @@ function render(frameWidth) {
  */
 function onLoad() {
   pymChild = new pym.Child({
-    renderCallback: render
+    renderCallback: render,
   });
 
   // let the parent page know that the embed has loaded

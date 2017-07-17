@@ -2,12 +2,9 @@
   border-collapse: collapse;
   border-spacing: 0;
   font-size: to-rem(14);
+  margin-bottom: $gutter;
   max-width: 100%;
   width: 100%;
-
-  @include mq($from: s) {
-    font-size: to-rem(16);
-  }
 }
 
 .dv-table caption {
@@ -18,7 +15,8 @@
   text-align: left;
 }
 
-.dv-table th, .dv-table td {
+.dv-table th,
+.dv-table td {
   border-top: to-rem(1) solid $color-offgrey;
   font-size: .875em;
   line-height: $line-height-subtitle;
@@ -41,10 +39,12 @@
   font-weight: $font-weight-bold;
 }
 
-.dv-table th.numeric-cell, .dv-table td.numeric-cell {
+.dv-table th.numeric-cell,
+.dv-table td.numeric-cell {
   text-align: right;
 }
 
-.dv-table th.nowrap-cell, .dv-table td.nowrap-cell {
+.dv-table th.nowrap-cell,
+.dv-table td.nowrap-cell {
   white-space: nowrap;
 }

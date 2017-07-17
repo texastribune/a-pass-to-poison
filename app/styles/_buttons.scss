@@ -18,10 +18,22 @@
   text-decoration: none;
   text-transform: uppercase;
   transition: background-color 300ms $curve-standard,
-    color 300ms $curve-standard,
-    border-color 300ms $curve-standard;
+    color 300ms $curve-standard, border-color 300ms $curve-standard;
   vertical-align: middle;
   white-space: nowrap;
+}
+
+.button--small {
+  font-size: to-rem(10);
+
+  @include mq($from: s) {
+    font-size: to-rem(12);
+  }
+}
+
+.button--link {
+  border: 0;
+  padding: 0;
 }
 
 .button--yellow {
@@ -29,7 +41,8 @@
   border-color: $color-tribune-yellow;
   color: $color-white;
 
-  &:active, &:hover {
+  &:active,
+  &:hover {
     background-color: $color-white;
     color: $color-tribune-yellow;
   }
@@ -40,7 +53,8 @@
   border-color: $color-facebook;
   color: $color-white;
 
-  &:active, &:hover {
+  &:active,
+  &:hover {
     background-color: $color-white;
     color: $color-facebook;
   }
@@ -51,8 +65,22 @@
   border-color: $color-twitter;
   color: $color-white;
 
-  &:active, &:hover {
+  &:active,
+  &:hover {
     background-color: $color-white;
     color: $color-twitter;
+  }
+}
+
+.button--donate {
+  background-color: $color-poison-teal;
+  border-color: $color-poison-teal;
+  color: $color-white;
+
+  &:active,
+  &:hover {
+    background-color: darken($color-poison-teal, 15%);
+    border-color: darken($color-poison-teal, 15%);
+    color: $color-white;
   }
 }

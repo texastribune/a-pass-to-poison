@@ -7,5 +7,5 @@ const config = require('../../project.config');
 s3.uploadFiles(config.distDir, {
   dest: config.folder,
   isPublicFile: true,
-  shouldCache: true
+  shouldCache: true,
 });

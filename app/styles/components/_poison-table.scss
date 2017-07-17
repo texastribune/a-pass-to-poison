@@ -1,0 +1,51 @@
+.poison-map {
+  max-width: to-rem(500);
+  margin-bottom: $gutter-double;
+  width: 100%;
+}
+
+.poison-table {
+  border: 2px solid $color-poison-grey;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: $font-rajdhani;
+  font-size: to-rem(16);
+  max-width: 100%;
+  width: 100%;
+
+  @include mq($from: s) {
+    font-size: to-rem(18);
+  }
+}
+
+.poison-table th,
+.poison-table td {
+  border-top: to-rem(2) solid $color-poison-grey;
+  font-size: .875em;
+  line-height: $line-height-subtitle;
+  padding: .375em .5em;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.poison-table thead th {
+  text-transform: uppercase;
+}
+
+.poison-table tbody th {
+  color: $color-poison-brown;
+  text-transform: uppercase;
+}
+
+.poison-table thead tr {
+  background-color: $color-poison-grey;
+}
+
+.poison-table tbody tr {
+  background-color: $color-white;
+}
+
+.poison-table th.numeric-cell,
+.poison-table td.numeric-cell {
+  text-align: right;
+}

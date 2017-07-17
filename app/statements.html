@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% from 'macros/prose.html' import prose %}
+
+{% set context = data.statements %}
+
+{% block body_class %}page__statements{% endblock body_class %}
+
+{% block masthead %}
+<header class="masthead" role="banner">
+  <a href="http://www.texastribune.org/">
+    <img class="tribune-logo" src="https://apps.texastribune.org/assets/images/tt-logo-white.png" alt="The Texas Tribune">
+  </a>
+  <p class="masthead__title"><a href="{{ static('/') }}">A Pass to Poison</a></p>
+  <div class="masthead__actionables">
+    <p class="masthead__actionable masthead__donate"><a class="button button--small button--donate" href="https://support.texastribune.org/">Donate</a></p>
+  </div>
+</header>
+{% endblock masthead %}
+
+{% block content %}
+<header class="article-header text-center">
+  <h1 class="article-title">{{ context.title }}</h1>
+  <p class="article-byline">
+    <span class="article-pub-date"><time datetime="{{ context.pub_date }}">{{ apFormatDate(context.pub_date) }}</time></span>
+  </p>
+</header>
+
+<div>
+  {{ prose(context.prose) }}
+</div>
+
+<div>
+{% for company in context.company_statements %}
+<h2 class="copy-subhead story-content">{{ company.company_name }}</h2>
+<div class="statements">
+  {{ prose(company.company_response) }}
+</div>
+{% endfor %}
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script defer src="{{ static('scripts/statements.js') }}"></script>
+{% endblock scripts %}

@@ -13,7 +13,8 @@ const config = {
   context: appSrc,
   entry: {
     // if you are building an embed, swap out these two lines
-    main: ['./utils/polyfills.js', './main.js']
+    main: ['./utils/polyfills.js', './main.js'],
+    statements: ['./utils/polyfills.js', './statements.js'],
     // main: ['./utils/polyfills.js', './main-embed.js']
   },
   output: {
@@ -21,12 +22,12 @@ const config = {
     pathinfo: true,
     publicPath: '/scripts/',
     filename: '[name].js',
-    chunkFilename: '[id].[hash].chunk.js',
+    chunkFilename: '[name].chunk.js',
     devtoolModuleFilenameTemplate: info =>
-      path.resolve(info.absoluteResourcePath)
+      path.resolve(info.absoluteResourcePath),
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx']
+    extensions: ['.js', '.json', '.jsx'],
   },
   module: {
     strictExportPresence: true,
@@ -36,22 +37,30 @@ const config = {
         include: appSrc,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015'],
-          plugins: ['syntax-dynamic-import']
-        }
-      }
-    ]
+          presets: [['es2015', { modules: false }]],
+          plugins: [
+            'syntax-dynamic-import',
+            [
+              'transform-es2015-classes',
+              {
+                loose: true,
+              },
+            ],
+          ],
+        },
+      },
+    ],
   },
   plugins: [
     new CaseSensitivePathsPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin()
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
   node: {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    setImmediate: false
-  }
+    setImmediate: false,
+  },
 };
 
 if (!IS_PRODUCTION) {

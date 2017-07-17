@@ -1,5 +1,6 @@
 // Sets border-box, line-height and text-size-adjust across the board
 html {
+  background-color: $color-primary;
   box-sizing: border-box;
   line-height: 1.15;
   text-size-adjust: 100%;
@@ -7,13 +8,15 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 // Set some helpful defaults
 body {
-  background-color: $color-white;
+  background-color: $color-poison-foam;
   color: $color-text;
   font-family: $font-sans-serif;
 }

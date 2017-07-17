@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>The Texas Tribune</title>
+  <title>{{ context.title }} | The Texas Tribune</title>
   {% include 'includes/metas.html' %}
 
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
@@ -10,21 +10,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Start fonts -->
-  <script>
-  window.WebFontConfig = {
-    google: {families: ['Open Sans:300,400,700', 'PT Serif:400,700']},
-    timeout: 10000
-  };
-  </script>
+<script>
+window.WebFontConfig = {
+  google: {
+    families: [
+      'Open Sans:300,400,700',
+      'PT Serif:400,400i,700',
+      'Rajdhani:500,600',
+    ],
+  },
+  timeout: 10000,
+};
+</script>
   <script async src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
   <!-- End fonts -->
+  {% if IS_PRODUCTION %}
+  <style>{{ inject('styles/main.css') }}</style>
+  {% else %}
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
+  {% endif %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock body_class %}">
 
 {% include 'includes/svg-defs.html' %}
 
-{% include 'components/site-header.html' %}
+{#{% include 'components/site-header.html' %}#}
+
+{% block masthead %}
+<header class="masthead" role="banner">
+  <a href="http://www.texastribune.org/">
+    <img class="tribune-logo" src="https://apps.texastribune.org/assets/images/tt-logo-white.png" alt="The Texas Tribune">
+  </a>
+  <p class="masthead__title">A Pass to Poison</p>
+  <div class="masthead__actionables">
+    <a class="masthead__actionable masthead__share masthead__share--facebook" href="{{ shares.facebook(CURRENT_PAGE_URL) }}">
+      <svg class="icon icon-facebook">
+        <use xlink:href="#icon-facebook"></use>
+      </svg>
+    </a>
+    <a class="masthead__actionable masthead__share masthead__share--twitter" href="{{ shares.twitter(CURRENT_PAGE_URL, context.tweet_text, '') }}">
+      <svg class="icon icon-twitter">
+        <use xlink:href="#icon-twitter"></use>
+      </svg>
+    </a>
+    <button class="button button--link masthead__actionable masthead__share masthead__share--comments" id="activate-comments">
+      <svg class="icon icon-comments">
+        <use xlink:href="#icon-comments"></use>
+      </svg>
+    </button>
+    <p class="masthead__actionable masthead__donate"><a class="button button--small button--donate" href="https://support.texastribune.org/">Donate</a></p>
+  </div>
+</header>
+{% endblock masthead %}
+
 
 <main role="main">
 {% block content %}{% endblock content %}
@@ -46,11 +84,11 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NSCKTR');</script>
+})(window,document,'script','dataLayer','GTM-P5L2Z5Z');</script>
 <!-- End Google Tag Manager -->
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSCKTR"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5L2Z5Z"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
@@ -60,14 +98,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <script>
 (function(s, p, d) {
-  var h=d.location.protocol, i=p+"-"+s,
-      e=d.getElementById(i), r=d.getElementById(p+"-root"),
-      u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
-      :"static."+p+".com";
+  var h = d.location.protocol,
+    i = p + '-' + s,
+    e = d.getElementById(i),
+    r = d.getElementById(p + '-root'),
+    u =
+      h === 'https:' ? 'd1z2jf7jlzjs58.cloudfront.net' : 'static.' + p + '.com';
   if (e) return;
-  e = d.createElement(s); e.id = i; e.async = true;
-  e.src = h+"//"+u+"/p.js"; r.appendChild(e);
-})("script", "parsely", document);
+  e = d.createElement(s);
+  e.id = i;
+  e.async = true;
+  e.src = h + '//' + u + '/p.js';
+  r.appendChild(e);
+})('script', 'parsely', document);
 </script>
 <!-- END Parse.ly Include: Standard -->
 {% endif %}

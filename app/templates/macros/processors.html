@@ -1,5 +1,142 @@
+{% macro raw(value) %}
+{{ value }}
+{% endmacro %}
+
 {% macro text(value) %}
-<p class="copy">{{ value }}</p>
+<p class="copy story-content">{{ value }}</p>
+{% endmacro %}
+
+{% macro clicker(value) %}
+<p class="copy copy--clicker story-content">{{ value }}</p>
+{% endmacro %}
+
+{% macro lead_text(value) %}
+<p class="copy copy--lead story-content">{{ value }}</p>
+{% endmacro %}
+
+{% macro section_title(value) %}
+<h2 class="copy-subhead story-content">{{ value }}</h2>
+{% endmacro %}
+
+{% macro smog() %}
+<aside class="smog-separator"><img class="lazyload" data-src="{{ static('assets/images/pass-to-poison-smog.png') }}" alt="Illustration of smog clouds"></aside>
+{% endmacro %}
+
+{% macro sidebar(value) %}
+<aside class="sidebar sidebar--{{ value.align or 'left' }}">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis dolorum impedit esse possimus, culpa magnam eos soluta voluptas deleniti eius magni earum quaerat reprehenderit, ullam aut id libero adipisci, accusamus iusto. Praesentium provident nulla qui laudantium reiciendis, saepe sunt, cupiditate, magnam cumque vel laboriosam dolorum. Reprehenderit ipsum, rerum ad expedita velit aliquid quasi, quia ratione veniam numquam excepturi omnis illum, maiores porro perferendis repellendus similique.
+</aside>
+{% endmacro %}
+
+{% macro sidebar_pollutant(value) %}
+<aside class="sidebar sidebar--pollutant sidebar--{{ value.align or 'left' }}">
+  {% if value.image %}<img class="sidebar__image{% if value.image_class %} sidebar__image--{{ value.image_class }}{% endif %} lazyload" data-src="{{ static('assets/images/' + value.image) }}">{% endif %}
+  <div class="sidebar__container sidebar__container--border">
+    <h3 class="sidebar__title">{{ value.title }}</h3>
+    <p class="sidebar__prose">{{ value.prose }}</p>
+    <p class="sidebar__prose"><span class="sidebar__prose--bold">Top emitters, 2012-2016</span>: {% for company in value.companies %}<span class="company__name">{{ company.name }}</span> in {{ company.county }} County{% if not loop.last %}; {% endif %}{% endfor %}</p>
+  </div>
+  {#<p class="sidebar__title-block sidebar__title-block--table">Top emitters</p>
+  <div class="sidebar__container">
+    <ul class="company__items">
+      {% for company in value.companies %}
+      <li class="company__item"><span class="company__name">{{ company.name }}</span> in {{ company.county }} County</li>
+      {% endfor %}
+    </ul>
+  </div>#}
+  {#<small class="sidebar__source">Sources: Centers for Disease Control and Prevention, Occupational Safety and Health Administration, National Institutes of Health, Environmental Protection Agency, Agency for Toxic Substances and Disease Registry, Texas Commission on Environmental Quality</small>#}
+</aside>
+{% endmacro %}
+
+{% macro sidebar_pollutant_old(value) %}
+<div class="">
+  {% if value.image %}<img class="sidebar__image{% if value.image_class %} sidebar__image--{{ value.image_class }}{% endif %}" src="{{ static('assets/images/' + value.image) }}">{% endif %}
+  <div class="sidebar__container sidebar__container--border">
+    <h3 class="sidebar__title">{{ value.title }}</h3>
+    <p class="sidebar__prose">{{ value.prose }}</p>
+    <p class="sidebar__prose">Top emitters, 2012-2016: {% for company in value.companies %}<span class="company__name">{{ company.name }}</span> in {{ company.county }} County{% if not loop.last %}; {% endif %}{% endfor %}</p>
+  </div>
+  {#<p class="sidebar__title-block sidebar__title-block--table">Top emitters</p>
+  <div class="sidebar__container">
+    <ul class="company__items">
+      {% for company in value.companies %}
+      <li class="company__item"><span class="company__name">{{ company.name }}</span> in {{ company.county }} County</li>
+      {% endfor %}
+    </ul>
+  </div>#}
+  {#<small class="sidebar__source">Sources: Centers for Disease Control and Prevention, Occupational Safety and Health Administration, National Institutes of Health, Environmental Protection Agency, Agency for Toxic Substances and Disease Registry, Texas Commission on Environmental Quality</small>#}
+</div>
+{% endmacro %}
+
+{% macro insert_pollutant_grid(value) %}
+<section class="insert">
+<h3 class="sidebar__title">{{ value.title }}</h3>
+
+<div class="insert__grid">
+  {% for pollutant in value.pollutants %}
+    {{ sidebar_pollutant(pollutant) }}
+  {% endfor %}
+</div>
+</section>
+{% endmacro %}
+
+{% macro sidebar_stats(value) %}
+<aside class="sidebar sidebar--{{ value.align or 'left' }} sidebar--text-align-right">
+  <h3 class="sidebar__title-block" style="display: inline-block;">{{ value.title }}</h3>
+  <div class="sidebar__container{% if value.border %} sidebar__container--border-{{ value.border }}{% endif %}">
+    <dl class="sidebar__definition-list">
+    {% for item in value.list %}
+      <div class="sidebar__definition-list-group">
+        <dt>{{ item.title }}</dt>
+        <dd>{{ item.value }}</dd>
+      </div>
+    {% endfor %}
+    </dl>
+
+    <small class="sidebar__note">{{ value.note }}</small>
+  </div>
+</aside>
+{% endmacro %}
+
+{% macro insert_map(value) %}
+<section class="sidebar sidebar--left sidebar--border-right">
+  <div class="sidebar__container sidebar__container--border">
+    <h3 class="sidebar__title">{{ value.title }}</h3>
+    <img class="poison-map lazyload" data-src="{{ static('assets/images/pass-to-poison-map@2x.png') }}" data-srcset="{{ static('assets/images/pass-to-poison-map.png') }}, {{ static('assets/images/pass-to-poison-map@2x.png') }} 2x" alt="A map highlighting the 10 counties that released the most rogue emissions in 2016.">
+    <table class="poison-table">
+      <thead>
+        <tr>
+          <th scope="col">County</th>
+          <th scope="col" class="numeric-cell">Amount released, in pounds</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for county in value.counties %}
+        <tr>
+          <th scope="row">{{ county.name }}</th>
+          <td class="numeric-cell">{{ county.value|intword|intcomma }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro ad(value) %}
+<aside class="story-ad story-ad--{{ value.align or 'left' }}">
+  <p class="story-ad__label">The Texas Tribune thanks its sponsors. <a href="https://mediakit.texastribune.org/">Become one</a>.</p>
+  <div class="story-ad__container">
+    <div class="dv-gpt-ad"></div>
+  </div>
+</aside>
+{% endmacro %}
+
+{% macro image(value) %}
+  <figure class="story-image story-image--{{ value.size or 'full' }} {% if value.align %}story-image--align-{{ value.align }}{% endif %}">
+    <img class="js-lazyload-img lazyload img-blur story-image__img" src="{{ static('assets/images/' + value.filename + '-180.jpg') }}" data-src="{{ static('assets/images/' + value.filename + '-1000.jpg') }}" data-srcset="{{ static('assets/images/' + value.filename + '-180.jpg') }} 180w, {{ static('assets/images/' + value.filename + '-320.jpg') }} 320w, {{ static('assets/images/' + value.filename + '-600.jpg') }} 600w, {{ static('assets/images/' + value.filename + '-800.jpg') }} 800w, {{ static('assets/images/' + value.filename + '-1000.jpg') }} 1000w, {{ static('assets/images/' + value.filename + '-1200.jpg') }} 1200w, {{ static('assets/images/' + value.filename + '-2000.jpg') }} 2000w, {{ static('assets/images/' + value.filename + '-2400.jpg') }} 2400w, {{ static('assets/images/' + value.filename + '-2800.jpg') }} 2800w, {{ static('assets/images/' + value.filename + '-3200.jpg') }} 3200w" alt="A Pass to Poison">
+    <figcaption class="story-image__caption">{{ value.caption }}{% if value.credit %} <span class="story-image__credit">Photo by {{ value.credit }} for The Texas Tribune.</span>{% endif %}</figcaption>
+  </figure>
 {% endmacro %}
 
 {% macro list(value) %}

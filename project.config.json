@@ -1,18 +1,21 @@
 {
   "bucket": "moose.texastribune.org",
-  "folder": "",
+  "folder": "pass-to-poison",
   "rawAssetsFolder": "raw_assets",
   "dataDir": "./data",
   "assetsDir": "./app/assets",
   "srcDir": "./app",
   "distDir": "./dist",
-  "files": [{
-    "fileId": "1ehh3ISrwq5lHNQS-eEs_i30Wi7UAF9txWgYTo56NFBI",
-    "type": "doc",
-    "name": "story"
-  }, {
-    "fileId": "1EACmSpajC1V7nJtwIxfA9aR-HAbTSDugSjStSSKWEaE",
-    "type": "sheet",
-    "name": "meta"
-  }]
+  "files": [
+    {
+      "fileId": "1KOcbDxX2h3yIS61AQUQRu3bw7x7pH-BKvkba4RE5ewE",
+      "type": "doc",
+      "name": "story"
+    },
+    {
+      "fileId": "1TANJ8n3UzGJ1Qf9HwYOwQkqCSKfrIxBnH2HpNs4zRUI",
+      "type": "doc",
+      "name": "statements"
+    }
+  ]
 }

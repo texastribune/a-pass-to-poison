@@ -2,53 +2,112 @@
   margin-bottom: $gutter-double;
 }
 
+.article-header__logo {
+  max-width: to-rem(225);
+}
+
 // The article's title.
 .article-title {
+  color: $color-poison-sludge;
   font-family: $font-serif;
-  font-size: 1.5rem;
+  font-size: to-rem(36);
   font-weight: $font-weight-bold;
+  letter-spacing: -0.02em;
   line-height: $line-height-title;
-  margin-bottom: .625em;
+  margin-bottom: .375em;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
+  margin-top: .625em;
   max-width: 20em;
 
+  @include mq($from: s) {
+    font-size: to-rem(54);
+    margin-bottom: .25rem;
+  }
+
   @include mq($from: m) {
-    font-size: 2rem;
+    font-size: to-rem(72);
+    margin-bottom: .125rem;
+  }
+
+  > img {
+    width: to-rem(650) + $gutter-double;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    max-width: 100%;
+  }
+
+  .page__statements & {
+    font-family: $font-rajdhani;
+    font-size: to-rem(32);
+    font-weight: $font-weight-semibold;
+    margin-bottom: .25em;
+    margin-top: .25em;
+    text-transform: uppercase;
+  }
+}
+
+.article-subtitle {
+  font-family: $font-rajdhani;
+  font-size: to-rem(20);
+  line-height: $line-height-subtitle;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 34em;
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  @include mq($from: s) {
+    font-size: to-rem(24);
   }
 }
 
 .article-byline {
-  color: $color-grey;
-  font-family: $font-sans-serif;
-  font-size: .875rem;
+  color: lighten($color-text, 20%);
+  font-family: $font-rajdhani;
+  font-weight: $font-weight-medium;
+  font-size: to-rem(16);
   letter-spacing: 0.04em;
   margin-bottom: 1em;
   margin-top: 1em;
+  padding-left: $gutter;
+  padding-right: $gutter;
   text-transform: uppercase;
 
   a {
     @include default-uppercase-link;
   }
+
+  @include mq($from: s) {
+    font-size: to-rem(18);
+  }
+
+  .page__statements & {
+    margin-bottom: .5em;
+    margin-top: .5em;
+  }
 }
 
 .article-author {
   display: block;
+  line-height: $line-height-subtitle;
   margin-bottom: $gutter-quarter;
 
   @include mq($from: s) {
-    display: inline;
-    margin-bottom: 0;
     margin-right: $gutter;
   }
 }
 
 .article-pub-date {
   display: block;
+  margin-top: 1em;
 
   @include mq($from: s) {
-    display: inline;
+    display: block;
+  }
+
+  .page__statements & {
+    margin-top: .5em;
   }
 }
 
@@ -81,21 +140,100 @@
   margin-left: $gutter-half;
 }
 
+.copy-shell {
+  // margin-left: 4rem;
+}
+
+.copy-subhead {
+  color: $color-poison-brown;
+  font-family: $font-rajdhani;
+  font-size: to-rem(22);
+  font-weight: $font-weight-semibold;
+  letter-spacing: .03em;
+  margin-bottom: 1em;
+  margin-top: 2.5em;
+  text-transform: uppercase;
+}
+
+.copy-subhead--black {
+  color: $color-text;
+}
+
 // For most forms of body copy. Takes most of its notes from the main site's
 // body copy. Typically you'll be applying this to each <p> tag directly, NOT
 // to the body copy's container. This makes it easier to float things around
 // individual paragraphs.
 .copy {
   font-family: $font-serif;
-  font-size: 1.125rem;
+  font-size: to-rem(18);
   line-height: $line-height-body;
   margin-bottom: 1em; // Ensures spacing below the <p> syncs up with font-size
   margin-left: auto; // Centers <p> tag within max-width
   margin-right: auto; // Centers <p> tag within max-width
   margin-top: 1em; // Ensures spacing above the <p> syncs up with font-size
-  max-width: 34em; // Controls the measure
+  // max-width: 34em; // Controls the measure
 
   > a {
     @include default-link;
+  }
+
+  .copy-shell & {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.copy--note {
+  font-style: italic;
+}
+
+.story-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: to-rem(664);
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+.copy--lead {
+  font-family: $font-rajdhani;
+  font-size: to-rem(20);
+}
+
+.copy--clicker {
+  font-style: italic;
+}
+
+.photo-credit {
+  text-align: right;
+  color: lighten($color-text, 20%);
+  font-size: to-rem(12);
+  font-family: $font-rajdhani;
+  line-height: $line-height-subtitle;
+  margin-bottom: $gutter-quarter;
+  margin-top: $gutter-quarter;
+  padding-left: $gutter-half;
+  padding-right: $gutter-half;
+
+  @include mq($from: s) {
+    font-size: to-rem(14);
+  }
+}
+
+.smog-separator {
+  margin-bottom: $gutter + $gutter-half;
+  margin-top: $gutter + $gutter-half;
+  text-align: center;
+  width: 100%;
+
+  > img {
+    filter: drop-shadow(1px 1px 1px transparentize($color-dark, .7));
+    vertical-align: bottom;
+    width: to-rem(65);
+  }
+
+  @include mq($from: s) {
+    margin-bottom: $gutter-double;
+    margin-top: $gutter-double;
   }
 }

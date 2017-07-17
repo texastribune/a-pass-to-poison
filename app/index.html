@@ -1,61 +1,56 @@
-{#
-  If you are creating a graphic, you'll need to change what template this page
-  is inheriting from below. Likely, you are going to want to change `base.html`
-  to `base-embed.html`. You will also need to change the "main" script webpack
-  is looking for in `webpack.config.js`. The template for a graphic can be
-  found below content block - replace what's in there as needed.
-#}
-
 {% extends 'base.html' %}
 {% import 'macros/shares.html' as shares %}
+{% from 'macros/prose.html' import prose %}
+
+{% set context = data.story %}
 
 {% block content %}
-<div class="container">
+
+<section class="card" id="lead-card">
+  <div class="card__bg">
+    <figure class="card__bg-image">
+      <img class="js-lazyload-img lazyload img-blur" src="{{ static('assets/images/pass-to-poison-lead-180.jpg') }}" sizes="(orientation: landscape) 100vw, 75vh" data-src="{{ static('assets/images/pass-to-poison-lead-1000.jpg') }}" data-srcset="{{ static('assets/images/pass-to-poison-lead-180.jpg') }} 180w, {{ static('assets/images/pass-to-poison-lead-320.jpg') }} 320w, {{ static('assets/images/pass-to-poison-lead-600.jpg') }} 600w, {{ static('assets/images/pass-to-poison-lead-800.jpg') }} 800w, {{ static('assets/images/pass-to-poison-lead-1000.jpg') }} 1000w, {{ static('assets/images/pass-to-poison-lead-1200.jpg') }} 1200w, {{ static('assets/images/pass-to-poison-lead-2000.jpg') }} 2000w, {{ static('assets/images/pass-to-poison-lead-2400.jpg') }} 2400w, {{ static('assets/images/pass-to-poison-lead-2800.jpg') }} 2800w, {{ static('assets/images/pass-to-poison-lead-3200.jpg') }} 3200w" alt="A Pass to Poison">
+    </figure>
+  </div>
+</section>
+
+<p class="photo-credit">Photo by Rafael Aguilera for The Texas Tribune</p>
+
+<div class="">
   <header class="article-header text-center">
-    <h1 class="article-title">The only member-supported, digital-first, nonpartisan media organization</h1>
+    <h1 class="article-title"><img src="{{ static('assets/images/poison-logo.png') }}" alt="{{ context.title }}"></h1>
+    <p class="article-subtitle">{{ context.subtitle }}</p>
     <p class="article-byline">
-      <span class="article-author">By <a href="#">Super Cool Corgi</a></span>
+      <span class="article-author">{{ context.byline_1 }}</span>
+      <span class="article-author">{{ context.byline_2 }}</span>
       <span class="article-pub-date"><time datetime="{{ context.pub_date }}">{{ apFormatDate(context.pub_date) }}</time></span>
     </p>
-    <div class="article-shares">
-      <a class="button button--small button--facebook article-shares-button" href="{{ shares.facebook(CURRENT_PAGE_URL) }}" ga-on="click" ga-hit-type="social" ga-social-network="Facebook" ga-social-action="share">
-        <svg class="icon icon-facebook">
-          <use xlink:href="#icon-facebook"></use>
-        </svg>
-      </a>
-      <a class="button button--small button--twitter article-shares-button" href="{{ shares.twitter(CURRENT_PAGE_URL, '', '') }}" ga-on="click" ga-hit-type="social" ga-social-network="Twitter" ga-social-action="tweet">
-        <svg class="icon icon-twitter">
-          <use xlink:href="#icon-twitter"></use>
-        </svg>
-      </a>
-      <a class="button button--small button--yellow article-shares-button" href="{{ shares.email('The Texas Tribune', '\n\n' + CURRENT_PAGE_URL)}}" ga-on="click" ga-hit-type="social" ga-social-network="Email" ga-social-action="email">
-        <svg class="icon icon-envelope">
-          <use xlink:href="#icon-envelope"></use>
-        </svg>
-      </a>
-    </div>
   </header>
-
-  <div class="intro-prose">
-    <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto consequuntur, blanditiis, eligendi hic exercitationem ab culpa! Optio fugiat architecto pariatur cum. <a href="#">Distinctio ab iusto temporibus</a>, deserunt quam placeat incidunt aspernatur!</p>
-    <p class="copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quasi labore, suscipit saepe. Officia dolor natus asperiores voluptatum, dolores eius unde eligendi. Praesentium placeat, aliquam ipsa, optio assumenda expedita sequi.</p>
+  <div>
+    {{ prose(context.prose) }}
   </div>
+  <p class="copy copy--note story-content">{{ context.disclosure }}</p>
+  <p class="copy copy--note story-content">{{ context.contributors }}</p>
+  <aside class="smog-separator"><img src="{{ static('assets/images/pass-to-poison-smog.png') }}" alt="Illustration of smog clouds"></aside>
+  <h2 class="copy-subhead copy-subhead--black story-content">About the data</h2>
+  <p class="copy copy--note story-content">{{ prose(context.appendix) }}</p>
 </div>
+
+<div class="container container--comments">
+  <div id="disqus_thread"></div>
+</div>
+
 {% endblock content %}
 
-{#
-
-<div class="app">
-  <h1 class="graphic-title">Lorem ipsum dolor sit amet</h1>
-  <p class="graphic-prose">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, eveniet, voluptatem. Debitis, deserunt, numquam. Omnis consectetur, voluptate, ipsam ad quasi tempore suscipit? Iusto nemo labore earum deleniti officiis minima nihil!</p>
-  <div id="graphic" class="graphic"></div>
-  <ul class="graphic-footer">
-    <li>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, porro.</li>
-    <li>Source: <a href="#">Lorem ipsum dolor sit</a></li>
-  </ul>
-</div>
-
-#}
+{% block inline_data %}
+<script>
+window.disqus_config = function() {
+  this.page.url = '{{ CURRENT_PAGE_URL }}';
+  this.page.identifier = 'apps/pass-to-poison';
+  this.page.title = '{{ context.title }}';
+};
+</script>
+{% endblock inline_data %}
 
 {% block scripts %}
 {{ super() }}

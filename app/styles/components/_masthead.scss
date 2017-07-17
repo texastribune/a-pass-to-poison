@@ -1,0 +1,134 @@
+.page__statements {
+  padding-top: to-rem(48) + $gutter-double;
+}
+
+.masthead {
+  align-items: center;
+  backface-visibility: hidden;
+  display: flex;
+  // justify-content: space-between;
+  min-width: 100%;
+  padding: $gutter-half;
+  position: fixed;
+  top: 0;
+  transition: background-color 300ms ease-out;
+  width: 100%;
+  z-index: 10;
+
+  .page__statements & {
+    background-color: transparentize($color-dark, .2);
+  }
+}
+
+.masthead--background {
+  background-color: transparentize($color-dark, .2);
+}
+
+.tribune-logo {
+  @include site-logo-height(18);
+  filter: drop-shadow(1px 1px 1px transparentize($color-dark, .7));
+  opacity: 0.95;
+
+  @include mq($from: m) {
+    @include site-logo-height(21);
+    margin-left: $gutter-quarter;
+  }
+}
+
+.masthead__title {
+  color: $color-offwhite;
+  display: none;
+  font-family: $font-rajdhani;
+  font-weight: $font-weight-medium;
+  font-size: to-rem(16);
+  letter-spacing: 0.05em;
+  margin-left: $gutter;
+  text-transform: uppercase;
+
+  @include mq($from: s) {
+    .masthead--background & {
+      display: block;
+    }
+
+    .page__statements & {
+      display: block;
+    }
+  }
+
+  > a {
+    color: $color-offwhite;
+    text-decoration: none;
+
+    &:active,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.masthead__actionables {
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+}
+
+.masthead__actionable {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.masthead__actionable + .masthead__actionable {
+  margin-left: $gutter;
+}
+
+.masthead__share {
+  color: $color-white;
+  font-size: to-rem(20);
+  text-decoration: none;
+  transition: color 300ms $curve-standard;
+
+  > svg {
+    vertical-align: bottom;
+  }
+}
+
+.masthead__share--facebook {
+  &:active,
+  &:hover {
+    color: $color-facebook;
+  }
+
+  @include mq($until: s) {
+    display: none;
+  }
+}
+
+.masthead__share--twitter {
+  &:active,
+  &:hover {
+    color: $color-twitter;
+  }
+
+  @include mq($until: s) {
+    display: none;
+  }
+}
+
+.masthead__share--comments {
+  &:active,
+  &:hover {
+    color: $color-poison-teal;
+  }
+}
+
+.masthead__comment-total {
+  font-size: .625em;
+  line-height: 1;
+  margin-top: .125em;
+}
+
+// .masthead__donate {
+//   margin-left: auto;
+// }

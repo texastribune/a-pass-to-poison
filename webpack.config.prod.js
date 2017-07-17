@@ -1,3 +1,4 @@
+const ManifestPlugin = require('webpack-manifest-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -9,33 +10,34 @@ const appBuild = path.join(__dirname, '/dist/scripts');
 
 const productionConfig = Object.assign({}, config, {
   bail: true,
-  devtool: 'source-map'
+  devtool: 'source-map',
 });
 
 productionConfig.output = {
   path: appBuild,
-  filename: '[name].js',
-  chunkFilename: '[id].[hash].chunk.js',
+  filename: '[name].[chunkhash:8].js',
+  chunkFilename: '[name].[chunkhash:8].chunk.js',
   publicPath: '/' + path.join(projectConfig.folder, '/scripts/'),
   devtoolModuleFilenameTemplate: info =>
-    path.relative(appSrc, info.absoluteResourcePath)
+    path.relative(appSrc, info.absoluteResourcePath),
 };
 
 productionConfig.plugins.push(
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: JSON.stringify('production')
-    }
+      NODE_ENV: JSON.stringify('production'),
+    },
   }),
+  new ManifestPlugin({ basePath: 'scripts/', fileName: 'rev-manifest.json' }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false,
-      comparisons: false
+      comparisons: false,
     },
     output: {
-      comments: false
+      comments: false,
     },
-    sourceMap: true
+    sourceMap: true,
   })
 );
 

@@ -17,7 +17,7 @@ bundler.plugin('done', function(stats) {
     return bs.sockets.emit('fullscreen:message', {
       title: 'Webpack Error:',
       body: stripAnsi(stats.toString()),
-      timeout: 100000
+      timeout: 100000,
     });
   }
 
@@ -32,8 +32,8 @@ module.exports = () => {
     middleware: [
       webpackDevMiddleware(bundler, {
         publicPath: webpackConfig.output.publicPath,
-        stats: { colors: true }
-      })
+        stats: { colors: true },
+      }),
     ],
     notify: false,
     open: false,
@@ -42,9 +42,9 @@ module.exports = () => {
     server: {
       baseDir: ['./.tmp', './app'],
       routes: {
-        '/node_modules': 'node_modules'
-      }
-    }
+        '/node_modules': 'node_modules',
+      },
+    },
   });
 
   gulp.watch(

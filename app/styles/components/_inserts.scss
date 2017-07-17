@@ -1,0 +1,336 @@
+.insert {
+  margin-bottom: $gutter-double;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $gutter-double;
+  max-width: to-rem(1200);
+}
+
+.insert__grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  > div {
+    flex: 0 0 percentage(1 / 1);
+    padding-left: $gutter;
+    padding-right: $gutter;
+    margin-bottom: $gutter;
+    max-width: percentage(1 / 1);
+
+    @include mq($from: m) {
+      flex: 0 0 percentage(1 / 2);
+      max-width: percentage(1 / 2);
+    }
+
+    @include mq($from: l) {
+      flex: 0 0 percentage(1 / 3);
+      max-width: percentage(1 / 3);
+    }
+  }
+}
+
+.sidebar {
+  margin-bottom: $gutter;
+  margin-top: $gutter-half;
+  position: relative;
+}
+
+.sidebar--pollutant {
+  margin-top: 0;
+}
+
+.sidebar__container {
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+.sidebar__container--border {
+  border-top: 2px solid $color-poison-teal;
+  padding-top: $gutter;
+}
+
+.sidebar__container--border-right {
+  border-right: 2px solid $color-poison-teal;
+}
+
+.sidebar__image {
+  filter: drop-shadow(1px 1px 1px transparentize($color-dark, .7));
+  display: block;
+  margin-left: auto;
+}
+
+.sidebar__image--butadiene {
+  height: 90px;
+  margin-bottom: -(90px / 3);
+
+  @include mq($from: s) {
+    height: 125px;
+    margin-bottom: -(125px / 3);
+  }
+}
+
+.sidebar__image--benzene {
+  height: 90px;
+  margin-bottom: -(90px * .264285714);
+
+  @include mq($from: s) {
+    height: 140px;
+    margin-bottom: -(140px * .264285714);
+  }
+}
+
+.sidebar__image--sulfur-dioxide {
+  height: 60px;
+  margin-bottom: -(60px * .3625);
+
+  @include mq($from: s) {
+    height: 80px;
+    margin-bottom: -(80px * .3625);
+  }
+}
+
+.sidebar__image--hydrogen-sulfide {
+  height: 60px;
+  margin-bottom: -(60px * .2625);
+
+  @include mq($from: s) {
+    height: 80px;
+    margin-bottom: -(80px * .2625);
+  }
+}
+
+.sidebar__image--nitrogen-oxide {
+  height: 60px;
+  margin-bottom: -(60px * .375);
+
+  @include mq($from: s) {
+    height: 80px;
+    margin-bottom: -(80px * .375);
+  }
+}
+
+.sidebar__image--particulate-matter {
+  height: 75px;
+  margin-bottom: -(75px * .288888889);
+
+  @include mq($from: s) {
+    height: 90px;
+    margin-bottom: -(90px * .288888889);
+  }
+}
+
+.sidebar--left {
+  float: left;
+  margin-left: $gutter;
+  margin-right: $gutter;
+  max-width: 100%;
+
+  @include mq($from: s) {
+    margin-left: 10%;
+    max-width: 45%;
+  }
+
+  @include mq($from: m) {
+    margin-right: $gutter-double;
+    max-width: 40%;
+  }
+
+  @include mq($from: l) {
+    max-width: to-rem(400);
+  }
+
+  @include mq($from: xxl) {
+    margin-left: 15%;
+  }
+
+  &.sidebar--pollutant {
+    margin-top: $gutter;
+  }
+}
+
+.sidebar--right {
+  float: right;
+  margin-left: $gutter;
+  margin-right: $gutter;
+  max-width: 100%;
+
+  @include mq($from: s) {
+    margin-right: 10%;
+    max-width: 45%;
+  }
+
+  @include mq($from: m) {
+    max-width: 40%;
+  }
+
+  @include mq($from: l) {
+    max-width: to-rem(400);
+  }
+
+  @include mq($from: xxl) {
+    margin-right: 15%;
+  }
+}
+
+.sidebar--text-align-right {
+  text-align: right;
+}
+
+.sidebar__title {
+  font-family: $font-rajdhani;
+  font-size: to-rem(24);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-title;
+  margin-bottom: .5em;
+  text-transform: uppercase;
+
+  @include mq($from: s) {
+    font-size: to-rem(28);
+  }
+}
+
+.sidebar__title-block {
+  background-color: $color-poison-grey;
+  font-family: $font-rajdhani;
+  font-size: to-rem(18);
+  font-weight: $font-weight-medium;
+  line-height: $line-height-title;
+  margin-bottom: $gutter;
+  padding: $gutter-quarter $gutter-half;
+  text-transform: uppercase;
+}
+
+.sidebar__title-block--table {
+  margin-bottom: $gutter-half;
+  padding: $gutter-quarter $gutter;
+}
+
+.sidebar__prose {
+  font-family: $font-rajdhani;
+  font-size: to-rem(16);
+  letter-spacing: 0.03em;
+  line-height: $line-height-body;
+  margin-bottom: $gutter;
+  margin-top: .5em;
+}
+
+.sidebar__prose--bold {
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+}
+
+.sidebar__source {
+  color: $color-grey;
+  font-family: $font-sans-serif;
+  font-size: to-rem(10);
+  line-height: $line-height-subtitle;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.story-image {
+  margin-bottom: $gutter-double;
+  margin-top: $gutter-double;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter-double;
+  padding-right: $gutter-double;
+}
+
+.story-image--full {
+  padding-left: $gutter;
+  padding-right: $gutter;
+  width: 100%;
+
+  @include mq($from: l) {
+    width: 75%;
+  }
+}
+
+.story-image--half {
+  width: 100%;
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  @include mq($from: photo-break) {
+    margin-top: $gutter-half;
+    padding-left: $gutter-double;
+    padding-right: 10%;
+    width: 50%;
+    max-width: to-rem(800);
+  }
+}
+
+.story-image--align-left {
+  float: left;
+}
+
+.story-image--align-right {
+  float: right;
+}
+
+.story-image__img {
+  vertical-align: bottom;
+  width: 100%;
+}
+
+.story-image__caption {
+  background-color: $color-poison-grey;
+  color: $color-text;
+  font-family: $font-rajdhani;
+  font-size: to-rem(14);
+  letter-spacing: 0.04em;
+  line-height: $line-height-subtitle;
+  padding: $gutter-half ($gutter-half + $gutter-quarter);
+}
+
+.story-image__credit {
+  color: lighten($color-text, 20%);
+}
+
+.company__item {
+  font-family: $font-rajdhani;
+  font-size: to-rem(16);
+  font-weight: $font-weight-medium;
+  line-height: $line-height-title;
+  margin-bottom: $gutter-half;
+}
+
+.company__name {
+  color: $color-poison-brown;
+  // font-size: to-rem(18);
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+}
+
+.sidebar__definition-list {
+  font-family: $font-rajdhani;
+  margin-bottom: $gutter;
+  text-align: right;
+
+  dt {
+    font-size: to-rem(18);
+    font-weight: $font-weight-medium;
+    line-height: $line-height-title;
+  }
+
+  dd {
+    color: $color-poison-brown;
+    font-size: to-rem(32);
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+  }
+}
+
+.sidebar__definition-list-group {
+  margin-bottom: $gutter-half;
+}
+
+.sidebar__note {
+  color: lighten($color-text, 20%);
+  font-family: $font-serif;
+  font-size: to-rem(13);
+  font-style: italic;
+  line-height: $line-height-subtitle;
+}
