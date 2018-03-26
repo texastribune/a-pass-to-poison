@@ -1,16 +1,5 @@
-# Data Visuals Kit
+# A Pass to Poison
 
-A template for creating standalone pages and graphics the Texas Tribune Data Visuals way.
+Texas industrial polluters rarely face sanctions when they spew noxious chemicals into the air during malfunctions and other unplanned incidents, exceeding the emission limits of their state-issued air permits.
 
-## Quickstart
-
-Run these commands to create your project's folder:
-
-```sh
-git clone --depth=1 https://github.com/texastribune/data-visuals-kit.git <name-of-project>
-cd <name-of-project> && rm -rf .git
-```
-
-Next, `yarn` (if you have it, and you should!) or `npm install`.
-
-Now, get to work!
+A Texas Tribune analysis of self-reported industry data shows that thousands of rogue releases occur at Texas industrial sites each year. Companies are often let off the hook.
