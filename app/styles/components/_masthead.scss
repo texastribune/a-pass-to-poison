@@ -16,17 +16,17 @@
   z-index: 10;
 
   .page__statements & {
-    background-color: transparentize($color-dark, .2);
+    background-color: transparentize($color-dark, 0.2);
   }
 }
 
 .masthead--background {
-  background-color: transparentize($color-dark, .2);
+  background-color: transparentize($color-dark, 0.2);
 }
 
 .tribune-logo {
   @include site-logo-height(18);
-  filter: drop-shadow(1px 1px 1px transparentize($color-dark, .7));
+  filter: drop-shadow(1px 1px 1px transparentize($color-dark, 0.7));
   opacity: 0.95;
 
   @include mq($from: m) {
@@ -126,9 +126,9 @@
 }
 
 .masthead__comment-total {
-  font-size: .625em;
+  font-size: 0.625em;
   line-height: 1;
-  margin-top: .125em;
+  margin-top: 0.125em;
 }
 
 // .masthead__donate {
