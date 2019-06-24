@@ -47,7 +47,7 @@
     "gulp-util": "^3.0.8",
     "html-entities": "^1.2.1",
     "htmlparser2": "^3.9.1",
-    "journalize": "^1.2.0",
+    "journalize": "^2.2.0",
     "mime-types": "^2.1.15",
     "mkdirp": "^0.5.1",
     "nunjucks": "^3.0.1",
