@@ -30,7 +30,7 @@
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
     "fs-extra": "^4.0.0",
-    "globby": "^6.0.0",
+    "globby": "^9.2.0",
     "googleapis": "^20.1.0",
     "gulp": "^3.9.1",
     "gulp-cache": "^0.4.6",
